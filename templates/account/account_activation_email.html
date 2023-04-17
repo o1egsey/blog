@@ -1,0 +1,11 @@
+{% autoescape off %}
+
+    Привіт {{ user.user_name }},
+
+    Ваш обліковий запис успішно створений! Перейдіть за посиланням нижче для активації!
+
+    http://{{ domain }}{% url 'account:activate' uidb64=uid token=token %}
+
+    Дякуюємо, що обрали саме нас!
+
+{% endautoescape %}
