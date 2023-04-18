@@ -13,7 +13,7 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
     path('login/', auth_views.LoginView.as_view(template_name='account/login.html', form_class=UserLoginForm), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='/account/login/'), name='logout'),
-    path('password_reset/', views.password_reset_request, name='password_reset'),
+    path('password_reset/', views.password_reset_request, name='pwdreset'),
     path('password_reset_confirm/<uidb64>/<token>', auth_views.PasswordResetConfirmView.as_view(template_name='account/user/password_reset_confirm.html',
                                                                                                 success_url='/account/password_reset_complete/',
                                                                                                 form_class=PwdResetConfirmForm),

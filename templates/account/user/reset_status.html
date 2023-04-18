@@ -28,12 +28,12 @@
                         <div class="col-12 col-lg-6  mx-auto">
                             <div class="p-4">
                                 {% if 'email' in request.get_full_path %}
-                                        <h3 class="mb-4">Password Reset Success</h3>
-                                        <p>Check your email for instructions</p>
+                                        <h3 class="mb-4">Запит на скидання паролю успішний!</h3>
+                                        <p>Перевірте електронну пошту для подальших інструкцій.</p>
                                 {% endif%}
                                 {% if 'complete' in request.get_full_path %}
-                                        <h3 class="mb-4">Password Reset Success</h3>
-                                        <a href="{% url "account:login" %}">Login</a>
+                                        <h3 class="mb-4">Пароль успішно відновлено!</h3>
+                                        <a href="{% url "account:login" %}">Авторизуватися</a>
                                 {% endif%}
                             </div>
                         </div>

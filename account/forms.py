@@ -68,8 +68,8 @@ class PwdResetForm(PasswordResetForm):
 
 class PwdResetConfirmForm(SetPasswordForm):
     new_password1 = forms.CharField(
-        label='New password', widget=forms.PasswordInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'New Password', 'id': 'form-newpass'}))
+        label='Новий пароль', widget=forms.PasswordInput(
+            attrs={'class': 'form-control mb-3', 'id': 'form-newpass'}))
     new_password2 = forms.CharField(
-        label='Repeat password', widget=forms.PasswordInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'New Password', 'id': 'form-new-pass2'}))
+        label='Повторить пароль', widget=forms.PasswordInput(
+            attrs={'class': 'form-control mb-3', 'id': 'form-new-pass2'}))

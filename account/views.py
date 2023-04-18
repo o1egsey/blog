@@ -52,6 +52,7 @@ def account_register(request):
             })
             send_mail(subject, message, 'greenspace1@ukr.net',
                       [user.email], fail_silently=False)
+            messages.success(request, "Реєстрація успішна. Буль ласка, перевірте Вашу поштову скриню для активації.")
             return redirect('/')
     else:
         registration_form = RegistrationForm()
@@ -68,7 +69,7 @@ def account_activate(request, uidb64, token):
         user.is_active = True
         user.save()
         login(request, user)
-        messages.success(request, "Ви успішно авторизувалися! Можете продовжувати покупку")
+        messages.success(request, "Ви успішно авторизувалися!")
         return redirect('account:dashboard')
 
     else:
@@ -101,4 +102,6 @@ def password_reset_request(request):
                         return HttpResponse('Invalid header found.')
                     return redirect("password_reset_email_confirm/")
     password_reset_form = PasswordResetForm()
-    return render(request=request, template_name="account/user/password_reset_form.html", context={"password_reset_form":password_reset_form})
+    return render(request=request,
+                  template_name="account/user/password_reset_form.html",
+                  context={"password_reset_form":password_reset_form})
