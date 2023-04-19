@@ -1,9 +1,9 @@
 from django import forms
-from .models import PostModel, Comment
+from .models import PostModel, Comment, Profile
 
 
 class PostModelForm(forms.ModelForm):
-    content = forms.CharField(widget=forms.Textarea(attrs={'rows': 4}))
+    content = forms.CharField(widget=forms.Textarea(attrs={'rows': 10}))
 
     class Meta:
         model = PostModel
@@ -23,3 +23,9 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('content',)
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = 'firstname', 'lastname', 'age', 'website', 'gender'

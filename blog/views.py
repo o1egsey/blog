@@ -1,14 +1,24 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from .models import PostModel
-from .forms import PostModelForm, PostUpdateForm, CommentForm
+from .models import PostModel, Profile
+from .forms import PostModelForm, PostUpdateForm, CommentForm, ProfileForm
+from account.models import UserBase
 
 
 @login_required
 def index(request):
     posts = PostModel.objects.all()
+    context = {
+        'posts': posts,
+    }
+    return render(request, 'home.html', context)
+
+
+@login_required
+def add_post(request):
     if request.method == 'POST':
         form = PostModelForm(request.POST)
         if form.is_valid():
@@ -19,12 +29,28 @@ def index(request):
     else:
         form = PostModelForm()
     context = {
-        'posts': posts,
         'form': form,
 
     }
 
-    return render(request, 'home.html', context)
+    return render(request, 'blog/post.html', context)
+
+
+@login_required
+def post_edit(request, pk):
+    post = PostModel.objects.get(id=pk)
+    if request.method == 'POST':
+        form = PostUpdateForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('blog:blog-post-detail', pk=post.id)
+    else:
+        form = PostUpdateForm(instance=post)
+    context = {
+        'post': post,
+        'form': form,
+    }
+    return render(request, 'blog/post_edit.html', context)
 
 
 @login_required
@@ -50,30 +76,53 @@ def post_detail(request, pk):
     return render(request, 'blog/post_detail.html', context)
 
 
+def view_profile(request):
+    return render(request, 'blog/profile.html')
+
+
 @login_required
-def post_edit(request, pk):
-    post = PostModel.objects.get(id=pk)
-    if request.method == 'POST':
-        form = PostUpdateForm(request.POST, instance=post)
-        if form.is_valid():
-            form.save()
-            return redirect('blog:blog-post-detail', pk=post.id)
+def profile_edit(request, id):
+
+    user = UserBase.objects.get(id=id)
+
+    if Profile.objects.filter(user_id=id).exists():
+        profile = Profile.objects.get(user_id=id)
     else:
-        form = PostUpdateForm(instance=post)
-    context = {
-        'post': post,
-        'form': form,
-    }
-    return render(request, 'blog/post_edit.html', context)
+        profile = Profile.objects.create(user=user)
 
-
-@login_required
-def post_delete(request, pk):
-    post = PostModel.objects.get(id=pk)
     if request.method == 'POST':
-        post.delete()
-        return redirect('blog:blog-index')
-    context = {
-        'post': post
-    }
-    return render(request, 'blog/post_delete.html', context)
+        if request.user != user:
+            return HttpResponse("У вас нет прав на изменение этой информации пользователя.")
+
+        profile_form = ProfileForm(request.POST)
+
+        if profile_form.is_valid():
+            profile_cd = profile_form.cleaned_data
+            profile.firstname = profile_cd['firstname']
+            profile.lastname = profile_cd['lastname']
+            profile.age = profile_cd['age']
+            profile.gender = profile_cd['gender']
+            profile.website = profile_cd['website']
+            profile.save()
+            messages.success(request, "Профіль успішно оновлено!")
+            return redirect("blog:profile_edit", id=id)
+        else:
+            return HttpResponse("Щось пішло не так. Спробуйте інші дані.")
+
+    elif request.method == 'GET':
+        profile_form = ProfileForm()
+        context = {'profile_form': profile_form, 'profile': profile, 'user': user}
+        return render(request, 'blog/profile.html', context)
+    else:
+        return HttpResponse("Використовуйте тільки GET/POST запити")
+
+# @login_required
+# def post_delete(request, pk):
+#     post = PostModel.objects.get(id=pk)
+#     if request.method == 'POST':
+#         post.delete()
+#         return redirect('blog:blog-index')
+#     context = {
+#         'post': post
+#     }
+#     return render(request, 'blog/post_delete.html', context)

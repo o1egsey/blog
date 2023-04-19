@@ -29,3 +29,20 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.content
+
+
+class Profile(models.Model):
+    GENDER_CHOICES = (
+        ('M', 'Male'),
+        ('F', 'Female'),
+    )
+    firstname = models.CharField(max_length=100, null=True, blank=True)
+    lastname = models.CharField(max_length=100, null=True, blank=True)
+    age = models.IntegerField(null=True, blank=True)
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, null=True, blank=True)
+    address = models.CharField(max_length=200, null=True, blank=True)
+    website = models.URLField(null=True, blank=True)
+    user = models.ForeignKey(UserBase, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.user_name

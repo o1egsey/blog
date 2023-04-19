@@ -1,0 +1,119 @@
+{% extends '../base.html' %}
+{% block content %}
+    {#    <div class="container-fluid">#}
+    {#        <div class="row no-gutter">#}
+    {#            <div class="col-md-12">#}
+    {#                <div class="login d-flex align-items-center py-5">#}
+    {#                    <div class="container">#}
+    {#                        <div class="row">#}
+    {#                            <div class="col-12 col-lg-7  mx-auto">#}
+    {#                                <br>#}
+    {#                                <h2>{{ user.user_name }}, це твій профіль</h2>#}
+    {#                                <br>#}
+    {#                                <br>#}
+    {#                                <form method="post" action="." enctype="multipart/form-data">#}
+    {#                                    {% csrf_token %}#}
+    {#                                    <!-- firstname -->#}
+    {#                                    <div class="form-group col-md-4">#}
+    {#                                        <label for="firstname">Firstname</label>#}
+    {#                                        <input type="text" class="form-control" id="firstname" name="firstname" value="{{ profile.firstname }}">#}
+    {#                                    </div>#}
+    {#                                    <!-- lastname -->#}
+    {#                                    <div class="form-group col-md-4">#}
+    {#                                        <label for="lastname">Lastname</label>#}
+    {#                                        <input type="text" class="form-control" id="lastname" name="lastname" value="{{ profile.lastname }}">#}
+    {#                                    </div>#}
+    {#                                    <!-- age -->#}
+    {#                                    <div class="form-group col-md-4">#}
+    {#                                        <label for="age">Age</label>#}
+    {#                                        <input type="text" class="form-control" id="age" name="age" value="{{ profile.age }}">#}
+    {#                                    </div>#}
+    {#                                    <!-- website -->#}
+    {#                                    <div class="form-group col-md-4">#}
+    {#                                        <label for="website">Website</label>#}
+    {#                                        <input type="text" class="form-control" id="website" name="website" value="{{ profile.website }}">#}
+    {#                                    </div>#}
+    {##}
+    {#                                    <!-- gender -->#}
+    {#                                    <div class="form-group col-md-4">#}
+    {#                                        <label for="gender">Gender</label><br>#}
+    {#                                        <select name="gender" id="gender">#}
+    {#                                            <option value="{{ profile.gender }}">-{{ profile.get_gender_display }}-</option>#}
+    {#                                            <option value="M">Male</option>#}
+    {#                                            <option value="F">Female</option>#}
+    {#                                        </select>#}
+    {#                                    </div>#}
+    {#                                    <button type="submit" class="btn btn-primary">Submit</button>#}
+    {#                                </form>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
+
+
+    <style>
+        .account-form input {
+            border: 2px solid #ccc;
+            height: calc(2em + .75rem + 2px);
+        }
+
+        .account-form input:focus {
+            border-color: #1497ff;
+            box-shadow: none;
+        }
+    </style>
+
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <div class="col-md-12">
+                <div class="login d-flex align-items-center py-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 col-lg-7  mx-auto">
+                                <form class="account-form p-4 rounded col-lg-10 mx-auto" action="." method="post">
+                                    {% csrf_token %}
+                                    <h3 class="mb-2 font-weight-bold">Ваш профіль, {{ user.user_name }}</h3>
+                                    <p class="mb-4">Можете змінити дані нижче.</p>
+                                    <!-- firstname -->
+                                    <div class="form-group col-md-8">
+                                        <label for="firstname">Ім'я</label>
+                                        <input type="text" class="form-control" id="firstname" name="firstname" value="{{ profile.firstname }}">
+                                    </div>
+                                    <!-- lastname -->
+                                    <div class="form-group col-md-8">
+                                        <label for="lastname">Призвіще</label>
+                                        <input type="text" class="form-control" id="lastname" name="lastname" value="{{ profile.lastname }}">
+                                    </div>
+                                    <!-- age -->
+                                    <div class="form-group col-md-8">
+                                        <label for="age">Вік</label>
+                                        <input type="text" class="form-control" id="age" name="age" value="{{ profile.age }}">
+                                    </div>
+                                    <!-- website -->
+                                    <div class="form-group col-md-8">
+                                        <label for="website">Веб-сайт</label>
+                                        <input type="text" class="form-control" id="website" name="website" value="{{ profile.website }}">
+                                    </div>
+
+                                    <!-- gender -->
+                                    <div class="form-group col-md-8">
+                                        <label for="gender">Стать</label><br>
+                                        <select name="gender" id="gender">
+                                            <option value="{{ profile.gender }}">-{{ profile.get_gender_display }}-</option>
+                                            <option value="M">Чоловік</option>
+                                            <option value="F">Жінка</option>
+                                        </select>
+                                    </div>
+                                    <button class="btn btn-primary btn-block py-2 mt-5" type="submit">Змінити</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

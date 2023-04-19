@@ -70,7 +70,7 @@ def account_activate(request, uidb64, token):
         user.save()
         login(request, user)
         messages.success(request, "Ви успішно авторизувалися!")
-        return redirect('account:dashboard')
+        return redirect('/')
 
     else:
         return render(request, 'account/activation_invalid.html')

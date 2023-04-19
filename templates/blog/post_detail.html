@@ -13,8 +13,6 @@
                         <div class="col-md-12">
                             <small>{{ post.date_created }}</small>
                             {% if post.author == request.user %}
-                            <span><a class="btn btn-danger float-right btn-sm"
-                                    href="{% url 'blog:blog-post-delete' post.id %}">Delete</a></span>
                             <span><a class="btn btn-primary mx-2 float-right btn-sm"
                                     href="{% url 'blog:blog-post-edit' post.id %}">Edit</a></span>
                             {% endif %}
