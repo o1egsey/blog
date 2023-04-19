@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'account.apps.AccountConfig',
+    'blog.apps.BlogConfig',
 
 ]
 
@@ -153,3 +154,4 @@ EMAIL_HOST_USER = 'greenspace1@ukr.net'
 EMAIL_HOST_PASSWORD = 'c7zgEcW7FFUklqG7'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
+
