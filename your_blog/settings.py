@@ -10,6 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# SECRET_KEY = os.getenv('SECRET_KEY')
 SECRET_KEY = 'django-insecure-r4&b$k+hyc&9@69$ut&bb*!py+80zwb&=bse3(^m$*s(#8@6v#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -69,23 +70,10 @@ WSGI_APPLICATION = 'your_blog.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-
     'default': {
-
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-
-        'NAME': 'blog',
-
-        'USER': 'postgres',
-
-        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
-
-        'HOST': 'localhost',
-
-        'PORT': '5432',
-
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-
 }
 
 
@@ -130,6 +118,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 AUTH_USER_MODEL = 'account.UserBase'
 LOGIN_REDIRECT_URL = '/'
@@ -138,10 +128,10 @@ LOGIN_URL = '/account/login'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
+# Налаштування SMTP серверу
 EMAIL_HOST = 'smtp.ukr.net'
-EMAIL_PORT = 465
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 2525
+EMAIL_HOST_USER = 'blogtestsmtp@ukr.net'
+EMAIL_HOST_PASSWORD = 's2GEQ9wES07Rj0IJ'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
-

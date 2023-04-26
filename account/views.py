@@ -50,7 +50,7 @@ def account_register(request):
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': account_activation_token.make_token(user),
             })
-            send_mail(subject, message, 'greenspace1@ukr.net',
+            send_mail(subject, message, 'blogtestsmtp@ukr.net',
                       [user.email], fail_silently=False)
             messages.success(request, "Реєстрація успішна. Буль ласка, перевірте Вашу поштову скриню для активації.")
             return redirect('/')
@@ -97,7 +97,7 @@ def password_reset_request(request):
                     }
                     email = render_to_string(email_template_name, c)
                     try:
-                        send_mail(subject, email, 'greenspace1@ukr.net', [user.email], fail_silently=False)
+                        send_mail(subject, email, 'blogtestsmtp@ukr.net', [user.email], fail_silently=False)
                     except BadHeaderError:
                         return HttpResponse('Invalid header found.')
                     return redirect("password_reset_email_confirm/")
