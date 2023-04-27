@@ -22,6 +22,6 @@ jobs:
           python manage.py migrate
       - name: Set up environment variables
         run: |
-          echo "DJANGO_SETTINGS_MODULE=my_project.settings" >> $GITHUB_ENV
+          echo "DJANGO_SETTINGS_MODULE=your_blog.settings" >> $GITHUB_ENV
       - name: Run tests
         run: pytest
