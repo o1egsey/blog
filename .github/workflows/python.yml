@@ -24,4 +24,4 @@ jobs:
         run: |
           echo "DJANGO_SETTINGS_MODULE=your_blog.settings" >> $GITHUB_ENV
       - name: Run tests
-        run: pytest
+        run: pytest --ds=your_blog/settings.py
