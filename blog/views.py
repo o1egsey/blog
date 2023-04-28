@@ -8,7 +8,6 @@ from .forms import PostModelForm, PostUpdateForm, CommentForm, ProfileForm
 from account.models import UserBase
 
 
-@login_required
 def index(request):
     posts = PostModel.objects.all()
     context = {
@@ -53,7 +52,6 @@ def post_edit(request, pk):
     return render(request, 'blog/post_edit.html', context)
 
 
-@login_required
 def post_detail(request, pk):
     post = PostModel.objects.get(id=pk)
     comments = post.comments()
