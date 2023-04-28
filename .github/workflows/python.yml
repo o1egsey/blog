@@ -25,6 +25,10 @@ jobs:
           python manage.py makemigrations
           python manage.py migrate
 
+      - name: Run linters
+        run: |
+          pylint your_blog
+
       - name: Run tests
         run: pytest -vv
 
