@@ -27,7 +27,7 @@ jobs:
 
       - name: Run linters
         run: |
-          pylint your_blog
+          pylint blog account
 
       - name: Run tests
         run: pytest -vv
