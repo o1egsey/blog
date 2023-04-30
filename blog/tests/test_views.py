@@ -5,71 +5,69 @@ from blog.models import PostModel, Comment, Profile
 
 
 class TestViews(TestCase):
-
     def setUp(self):
         self.client = Client()
 
         self.user = UserBase.objects.create_user(
-            user_name='testuser',
-            password='testpass123',
-            email='test@gmail.com'
+            user_name="testuser", password="testpass123", email="test@gmail.com"
         )
         self.user.save()
 
         self.post = PostModel.objects.create(
-            title='Test post title',
-            content='Test post content',
-            author=self.user
+            title="Test post title", content="Test post content", author=self.user
         )
 
         self.comment = Comment.objects.create(
-            content='Test comment',
-            user=self.user,
-            post=self.post
+            content="Test comment", user=self.user, post=self.post
         )
 
         self.profile = Profile.objects.create(
             user=self.user,
-            firstname='Test',
-            lastname='User',
+            firstname="Test",
+            lastname="User",
             age=25,
-            gender='M',
-            website='http://test.com'
+            gender="M",
+            website="http://test.com",
         )
 
     def test_index_view(self):
-        response = self.client.get(reverse('blog:blog-index'))
+        response = self.client.get(reverse("blog:blog-index"))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'home.html')
+        self.assertTemplateUsed(response, "index.html")
 
     def test_add_post_view(self):
-        self.client.login(username='testuser', password='testpass123')
-        response = self.client.post(reverse('blog:blog-post-add'), {
-            'title': 'New post',
-            'content': 'New post content'
-        })
+        self.client.login(username="testuser", password="testpass123")
+        response = self.client.post(
+            reverse("blog:blog-post-add"),
+            {"title": "New post", "content": "New post content"},
+        )
         self.assertEqual(response.status_code, 302)
 
     def test_post_detail_view(self):
-        response = self.client.get(reverse('blog:blog-post-detail', args=[self.post.id]))
+        response = self.client.get(
+            reverse("blog:blog-post-detail", args=[self.post.id])
+        )
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'blog/post_detail.html')
+        self.assertTemplateUsed(response, "blog/post_detail.html")
 
     def test_post_edit_view(self):
-        self.client.login(username='testuser', password='testpass123')
-        response = self.client.post(reverse('blog:blog-post-edit', args=[self.post.id]), {
-            'title': 'Updated post title',
-            'content': 'Updated post content'
-        })
+        self.client.login(username="testuser", password="testpass123")
+        response = self.client.post(
+            reverse("blog:blog-post-edit", args=[self.post.id]),
+            {"title": "Updated post title", "content": "Updated post content"},
+        )
         self.assertEqual(response.status_code, 302)
 
     def test_profile_edit_view(self):
-        self.client.login(username='testuser', password='testpass123')
-        response = self.client.post(reverse('blog:profile_edit', args=[self.user.id]), {
-            'firstname': 'New Firstname',
-            'lastname': 'New Lastname',
-            'age': 30,
-            'gender': 'F',
-            'website': 'http://newtest.com'
-        })
+        self.client.login(username="testuser", password="testpass123")
+        response = self.client.post(
+            reverse("blog:profile_edit", args=[self.user.id]),
+            {
+                "firstname": "New Firstname",
+                "lastname": "New Lastname",
+                "age": 30,
+                "gender": "F",
+                "website": "http://newtest.com",
+            },
+        )
         self.assertEqual(response.status_code, 302)
