@@ -33,7 +33,7 @@ class TestViews(TestCase):
     def test_index_view(self):
         response = self.client.get(reverse("blog:blog-index"))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "index.html")
+        self.assertTemplateUsed(response, "home.html")
 
     def test_add_post_view(self):
         self.client.login(username="testuser", password="testpass123")
