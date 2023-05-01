@@ -1,5 +1,5 @@
 """
-WSGI config for your_blog project.
+WSGI .config for your_blog project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

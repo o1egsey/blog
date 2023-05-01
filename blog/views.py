@@ -8,12 +8,14 @@ from .forms import PostModelForm, PostUpdateForm, CommentForm, ProfileForm
 from account.models import UserBase
 
 
+
+
 def index(request):
-    posts = PostModel.objects.all()
-    context = {
-        "posts": posts,
-    }
-    return render(request, "home.html", context)
+  posts = PostModel.objects.all()
+  context = {
+    "posts": posts,
+  }
+  return render(request, "home.html", context)
 
 
 @login_required
@@ -109,15 +111,3 @@ def profile_edit(request, id):
         return render(request, "blog/profile.html", context)
     else:
         return HttpResponse("Використовуйте тільки GET/POST запити")
-
-
-# @login_required
-# def post_delete(request, pk):
-#     post = PostModel.objects.get(id=pk)
-#     if request.method == 'POST':
-#         post.delete()
-#         return redirect('blog:blog-index')
-#     context = {
-#         'post': post
-#     }
-#     return render(request, 'blog/post_delete.html', context)
