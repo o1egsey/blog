@@ -1,5 +1,3 @@
-import pytest
-from mixer.backend.django import mixer
 from account.models import UserBase
 
 from django.test import TestCase
