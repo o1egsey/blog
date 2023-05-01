@@ -8,14 +8,12 @@ from .forms import PostModelForm, PostUpdateForm, CommentForm, ProfileForm
 from account.models import UserBase
 
 
-
-
 def index(request):
-  posts = PostModel.objects.all()
-  context = {
-    "posts": posts,
-  }
-  return render(request, "home.html", context)
+    posts = PostModel.objects.all()
+    context = {
+        "posts": posts,
+    }
+    return render(request, "home.html", context)
 
 
 @login_required
