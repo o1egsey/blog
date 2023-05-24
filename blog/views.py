@@ -56,6 +56,7 @@ def post_edit(request, pk):
     }
     return render(request, "blog/post_edit.html", context)
 
+
 @login_required
 def post_detail(request, pk):
     post = PostModel.objects.get(id=pk)

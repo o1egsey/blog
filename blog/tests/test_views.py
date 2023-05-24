@@ -61,7 +61,6 @@ class TestViews(TestCase):
     #     self.assertEqual(response.status_code, 200)
     #     self.assertTemplateUsed(response, "blog/post_detail.html")
 
-
     def test_post_edit_view(self):
         self.client.login(username="testuser", password="testpass123")
         response = self.client.post(
