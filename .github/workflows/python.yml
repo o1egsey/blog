@@ -55,4 +55,5 @@ jobs:
 
       - name: Run tests
         run: |
+          export PATH=$PATH:/usr/local/bin/
           pytest -vv
