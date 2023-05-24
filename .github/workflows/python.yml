@@ -12,6 +12,7 @@ jobs:
       - uses: browser-actions/setup-chrome@v1
         with:
           chrome-version: stable
+      - run: chrome --version
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -21,8 +22,8 @@ jobs:
 
       - name: Install ChromeDriver
         run: |
-          LATEST_CHROMEDRIVER=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_MAJOR)
-          wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$LATEST_CHROMEDRIVER/chromedriver_linux64.zip
+          CHROMEDRIVER_VERSION=<your_chromedriver_version>
+          wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip
           unzip /tmp/chromedriver.zip -d /tmp
           sudo mv /tmp/chromedriver /usr/local/bin/chromedriver
           sudo chmod +x /usr/local/bin/chromedriver
