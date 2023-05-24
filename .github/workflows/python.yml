@@ -33,6 +33,8 @@ jobs:
         run: |
           pyflakes blog 
 
+      - name: Run Server
+        run: python manage.py runserver
+
       - name: Run tests
         run: pytest -vv
-

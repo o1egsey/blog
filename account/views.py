@@ -39,41 +39,43 @@ def account_register(request):
             user = registration_form.save(commit=False)
             user.email = registration_form.cleaned_data['email']
             user.set_password(registration_form.cleaned_data['password'])
-            user.is_active = False
+            # user.is_active = False
+            user.is_active = True
             user.save()
-
-            current_site = get_current_site(request)
-            subject = 'Activate your Account'
-            message = render_to_string('account/account_activation_email.html', {
-                'user': user,
-                'domain': current_site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                'token': account_activation_token.make_token(user),
-            })
-            send_mail(subject, message, 'blogtestsmtp@ukr.net',
-                      [user.email], fail_silently=False)
-            messages.success(request, "Реєстрація успішна. Буль ласка, перевірте Вашу поштову скриню для активації.")
+            login(request, user)
+            # current_site = get_current_site(request)
+            # subject = 'Activate your Account'
+            # message = render_to_string('account/account_activation_email.html', {
+            #     'user': user,
+            #     'domain': current_site.domain,
+            #     'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+            #     'token': account_activation_token.make_token(user),
+            # })
+            # send_mail(subject, message, 'blogtestsmtp@ukr.net',
+            #           [user.email], fail_silently=False)
+            # messages.success(request, "Реєстрація успішна. Буль ласка, перевірте Вашу поштову скриню для активації.")
+            messages.success(request, "Реєстрація успішна!")
             return redirect('/')
     else:
         registration_form = RegistrationForm()
     return render(request, 'account/registration.html', {'form': registration_form})
 
 
-def account_activate(request, uidb64, token):
-    try:
-        uid = force_str(urlsafe_base64_decode(uidb64))
-        user = UserBase.objects.get(pk=uid)
-    except(TypeError, ValueError, OverflowError, user.DoesNotExist):
-        user = None
-    if user is not None and account_activation_token.check_token(user, token):
-        user.is_active = True
-        user.save()
-        login(request, user)
-        messages.success(request, "Ви успішно авторизувалися!")
-        return redirect('/')
-
-    else:
-        return render(request, 'account/activation_invalid.html')
+# def account_activate(request, uidb64, token):
+#     try:
+#         uid = force_str(urlsafe_base64_decode(uidb64))
+#         user = UserBase.objects.get(pk=uid)
+#     except(TypeError, ValueError, OverflowError, user.DoesNotExist):
+#         user = None
+#     if user is not None and account_activation_token.check_token(user, token):
+#         user.is_active = True
+#         user.save()
+#         login(request, user)
+#         messages.success(request, "Ви успішно авторизувалися!")
+#         return redirect('/')
+#
+#     else:
+#         return render(request, 'account/activation_invalid.html')
 
 
 def password_reset_request(request):

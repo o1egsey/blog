@@ -93,6 +93,44 @@
         visibility: visible;
         opacity: 1;
     }
+    /* Success message */
+    .success {
+        color: white;
+        background-color: #4CAF50;
+        padding: 10px;
+        border-radius: 5px;
+        animation: fade-in 0.5s ease-in-out;
+    }
+
+    /* Error message */
+    .error {
+        color: white;
+        background-color: #f44336;
+        padding: 10px;
+        border-radius: 5px;
+        animation: slide-out 0.5s ease-in-out forwards;
+    }
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    {#@keyframes slide-out {#}
+    {#    from {#}
+    {#        opacity: 1;#}
+    {#        transform: translateX(0);#}
+    {#    }#}
+    {#    to {#}
+    {#        opacity: 0;#}
+    {#        transform: translateX(100%);#}
+    {#    }#}
+    {#}#}
 </style>
 
 <body>
@@ -155,12 +193,22 @@
     </nav>
 
     {% if messages %}
+        {#        {% for message in messages %}#}
+        {#            <div class="alert alert-success d-flex align-items-center" role="alert">#}
+        {#                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>#}
+        {##}
+        {#                {{ message }}#}
+        {##}
+        {#            </div>#}
+        {#        {% endfor %}#}
+        {#        {% for message in messages %}#}
+        {#            <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">#}
+        {#                {{ message }}#}
+        {#            </div>#}
+        {#        {% endfor %}#}
         {% for message in messages %}
-            <div class="alert alert-success d-flex align-items-center" role="alert">
-                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-                <div>
-                    {{ message }}
-                </div>
+            <div class="message {% if message.tags %}{{ message.tags }}{% endif %} {% if message.tags == 'success' or 'error' %}fade-in{% endif %}">
+                {{ message }}
             </div>
         {% endfor %}
     {% endif %}

@@ -8,12 +8,17 @@ from .forms import PostModelForm, PostUpdateForm, CommentForm, ProfileForm
 from account.models import UserBase
 
 
+# @login_required
 def index(request):
-    posts = PostModel.objects.all()
-    context = {
-        "posts": posts,
-    }
-    return render(request, "home.html", context)
+    if not request.user.is_authenticated:
+        messages.error(request, 'You must be logged in first!')
+        return redirect('account:login')
+    else:
+        posts = PostModel.objects.all()
+        context = {
+            "posts": posts,
+        }
+        return render(request, "home.html", context)
 
 
 @login_required
@@ -24,6 +29,7 @@ def add_post(request):
             instance = form.save(commit=False)
             instance.author = request.user
             instance.save()
+            messages.success(request, "Blog Post posted successfully!")
             return redirect("blog:blog-index")
     else:
         form = PostModelForm()
@@ -50,7 +56,7 @@ def post_edit(request, pk):
     }
     return render(request, "blog/post_edit.html", context)
 
-
+@login_required
 def post_detail(request, pk):
     post = PostModel.objects.get(id=pk)
     comments = post.comments()
@@ -65,7 +71,7 @@ def post_detail(request, pk):
             return redirect("blog:blog-post-detail", pk=post.id)
     else:
         c_form = CommentForm()
-    context = {"post": post, "c_form": c_form, "comments": comments}
+    context = {"post": post, "c_form": c_form, "comments": comments, 'user': request.user}
     return render(request, "blog/post_detail.html", context)
 
 
@@ -98,7 +104,7 @@ def profile_edit(request, id):
             profile.gender = profile_cd["gender"]
             profile.website = profile_cd["website"]
             profile.save()
-            messages.success(request, "Профіль успішно оновлено!")
+            messages.success(request, "Profile updated successfully!")
             return redirect("blog:profile_edit", id=id)
         else:
             return HttpResponse("Щось пішло не так. Спробуйте інші дані.")
