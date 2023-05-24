@@ -8,6 +8,9 @@ class TestDefaultSuite:
     def setup_method(self, method):
         self.driver = webdriver.Chrome()
         self.vars = {}
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument("--headless")  # Run Chrome in headless mode
+        chrome_options.add_argument("--no-sandbox")  # Bypass OS security model
 
     def teardown_method(self, method):
         self.driver.quit()
