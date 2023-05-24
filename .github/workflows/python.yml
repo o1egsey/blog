@@ -15,14 +15,13 @@ jobs:
         with:
           python-version: 3.8
 
-      - name: Install Chrome and ChromeDriver
+      - name: Set up Chrome
+        uses: actions/setup-chrome@v2
+        with:
+          chrome-version: stable
+
+      - name: ChromeDriver
         run: |
-            # Install Chrome
-            wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-            echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
-            sudo apt-get update
-            sudo apt-get install -y google-chrome-stable
-            
             # Install ChromeDriver
             CHROME_VERSION=$(google-chrome-stable --version | grep -oP "(\d+\.){3}\d+")
             CHROME_DRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
