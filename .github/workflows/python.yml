@@ -34,7 +34,7 @@ jobs:
           pyflakes blog 
 
       - name: Run Server
-        run: python manage.py runserver
+        run: python manage.py runserver &
 
       - name: Run tests
         run: pytest -vv
