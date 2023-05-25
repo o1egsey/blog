@@ -42,7 +42,13 @@ Test Successful Login
     Close Browser
 
 Test View Profile
-    Login   1aaasdvfff.asdd12faa34sa3sd@example.com     asdf@1234
+#    Login   1aaasdvfff.asdd12faa34sa3sd@example.com     asdf@1234
+    Open Browser    http://127.0.0.1:8000/account/login/    chrome  options=add_argument("--headless")
+    Click Element    css=.account-form
+    Input Text    id=login-username    12a1aasdvffff.asdd12faa34sa3sd@eexample.com
+    Input Text    id=login-pwd    asdf@1234
+    Click Element    css=.login
+    Click Element    css=.btn-primary
     ${title}    Get Title
     Log To Console    Page title: ${title}
     Click Element    css=.btn:nth-child(3)
