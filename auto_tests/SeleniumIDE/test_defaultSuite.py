@@ -88,9 +88,9 @@ class TestDefaultSuite():
         self.driver.set_window_size(982, 823)
         self.driver.find_element(By.ID, "add-post").click()
         self.driver.find_element(By.ID, "title").click()
-        self.driver.find_element(By.ID, "title").send_keys("Some title")
+        self.driver.find_element(By.ID, "title").send_keys("Some neq title")
         self.driver.find_element(By.NAME, "content").click()
-        self.driver.find_element(By.NAME, "content").send_keys("Some body")
+        self.driver.find_element(By.NAME, "content").send_keys("Some neq body")
         self.driver.find_element(By.ID, "add-post").click()
         assert (
             self.driver.find_element(By.CSS_SELECTOR, ".message").text
