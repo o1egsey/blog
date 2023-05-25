@@ -17,9 +17,9 @@ Login
 Test Successful Registration
     Open Browser    http://127.0.0.1:8000/account/register/    chrome   options=add_argument("--headless")
     Click Element    id=id_user_name
-    Input Text    id=id_user_name    12asddff.asassedff334aaa1a
+    Input Text    id=id_user_name    123asddff.asassedff334aaa1a
     Click Element    id=id_email
-    Input Text    id=id_email    12a1aasdvffff.asdd12faa34sa3sd@eexample.com
+    Input Text    id=id_email    123a1aasdvffff.asdd12faa34sa3sd@eexample.com
     Click Element    id=id_password
     Input Text    id=id_password    asdf@1234
     Click Element    id=id_password2
@@ -33,7 +33,7 @@ Test Successful Registration
 Test Successful Login
     Open Browser    http://127.0.0.1:8000/account/login/    chrome  options=add_argument("--headless")
     Click Element    css=.account-form
-    Input Text    id=login-username    12a1aasdvffff.asdd12faa34sa3sd@eexample.com
+    Input Text    id=login-username    123a1aasdvffff.asdd12faa34sa3sd@eexample.com
     Input Text    id=login-pwd    asdf@1234
     Click Element    css=.login
     Click Element    css=.btn-primary
@@ -45,7 +45,7 @@ Test View Profile
 #    Login   1aaasdvfff.asdd12faa34sa3sd@example.com     asdf@1234
     Open Browser    http://127.0.0.1:8000/account/login/    chrome  options=add_argument("--headless")
     Click Element    css=.account-form
-    Input Text    id=login-username    12a1aasdvffff.asdd12faa34sa3sd@eexample.com
+    Input Text    id=login-username    123a1aasdvffff.asdd12faa34sa3sd@eexample.com
     Input Text    id=login-pwd    asdf@1234
     Click Element    css=.login
     Click Element    css=.btn-primary
