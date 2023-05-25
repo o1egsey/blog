@@ -9,7 +9,7 @@ from selenium.webdriver.chrome.options import Options
 class TestDefaultSuite():
     def setup_method(self, method):
         options = Options()
-        # options.headless = True
+        options.headless = True
         self.driver = webdriver.Chrome(chrome_options=options)
 
     def teardown_method(self, method):
