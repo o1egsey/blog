@@ -54,17 +54,17 @@ Test View Profile
 Test Successful Land On Add Blog Post
     Login    1aaasdvfff.asdd12faa34sa3sd@example.com    asdf@1234
     Set Window Size    982    823
-    Click Element    css=#add-post
+    Click Element    xpath=//*[@id="add-post"]
     Title Should Be    Add New Post
     Close Browser
 
 Test Successful Add Blog Post
     Login    1aaasdvfff.asdd12faa34sa3sd@example.com    asdf@1234
     Set Window Size    982    823
-    Click Element    css=#add-post
-    Input Text    css=#title    Some title
+    Click Element    xpath=//*[@id="add-post"]
+    Input Text    xpath=//*[@id="title"]    Some title
     Input Text    xpath=//*[@id="content"]    Some body
-    Click Element    css=#add-post
+    Click Element    xpath=//*[@id="add-post"]
     Page Should Contain Element    css=.message
     Close Browser
 
