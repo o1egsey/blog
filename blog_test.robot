@@ -16,7 +16,6 @@ Login
 *** Test Cases ***
 Test Successful Registration
     Open Browser    http://127.0.0.1:8000/account/register/    chrome   options=add_argument("--headless")
-    Set Window Size    982    823
     Click Element    id=id_user_name
     Input Text    id=id_user_name    12asddff.asassedff334aaa1a
     Click Element    id=id_email
@@ -33,7 +32,6 @@ Test Successful Registration
 
 Test Successful Login
     Open Browser    http://127.0.0.1:8000/account/login/    chrome  options=add_argument("--headless")
-    Set Window Size    982    823
     Click Element    css=.account-form
     Input Text    id=login-username    12a1aasdvffff.asdd12faa34sa3sd@eexample.com
     Input Text    id=login-pwd    asdf@1234
@@ -45,15 +43,17 @@ Test Successful Login
 
 Test View Profile
     Login   1aaasdvfff.asdd12faa34sa3sd@example.com     asdf@1234
-    Set Window Size    982    823
+    ${title}    Get Title
+    Log To Console    Page title: ${title}
     Click Element    css=.btn:nth-child(3)
     Title Should Be    My Profile
-    Capture Page Screenshot
     Page Should Contain Element    css=.btn:nth-child(4)
     Close Browser
 
 Test Successful Land On Add Blog Post
     Login    1aaasdvfff.asdd12faa34sa3sd@example.com    asdf@1234
+    ${title}    Get Title
+    Log To Console    Page title: ${title}
     Set Window Size    982    823
     Click Element    xpath=//*[@id="add-post"]
     Title Should Be    Add New Post
@@ -61,7 +61,8 @@ Test Successful Land On Add Blog Post
 
 Test Successful Add Blog Post
     Login    1aaasdvfff.asdd12faa34sa3sd@example.com    asdf@1234
-    Set Window Size    982    823
+    ${title}    Get Title
+    Log To Console    Page title: ${title}
     Click Element    xpath=//*[@id="add-post"]
     Input Text    xpath=//*[@id="title"]    Some title
     Input Text    xpath=//*[@id="content"]    Some body
