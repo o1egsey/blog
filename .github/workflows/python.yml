@@ -25,26 +25,20 @@ jobs:
           python manage.py makemigrations
           python manage.py migrate
 
-      - name: Run PyCodeStyle
-        run: |
-          pycodestyle blog
-
-      - name: Run PyFlakes
-        run: |
-          pyflakes blog 
-
-#      - name: Run tests
+#      - name: Run PyCodeStyle
 #        run: |
-#          python manage.py runserver &
-#          pytest -vv
+#          pycodestyle blog
+#
+#      - name: Run PyFlakes
+#        run: |
+#          pyflakes blog
+
+      - name: Run tests
+        run: |
+          python manage.py runserver &
+          pytest -vv
 
       - name: Run Robot Tests
         run: |
           python manage.py runserver &
-          robot --outputdir results/ blog_test.robot
-
-      - name: Upload test artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: Test Results
-          path: results/
+          robot blog_test.robot
