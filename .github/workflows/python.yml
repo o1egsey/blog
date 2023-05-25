@@ -41,4 +41,10 @@ jobs:
       - name: Run Robot Tests
         run: |
           python manage.py runserver &
-          robot blog_test.robot
+          robot --outputdir results/ blog_test.robot
+
+      - name: Upload test artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Test Results
+          path: results/
