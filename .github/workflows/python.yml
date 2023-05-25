@@ -35,5 +35,5 @@ jobs:
 
       - name: Run tests
         run: |
-          python manage.py runserver
+          python manage.py runserver &
           pytest -vv
