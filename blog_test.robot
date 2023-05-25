@@ -16,8 +16,8 @@ Login
 Test Successful Registration
     Open Browser    http://127.0.0.1:8000/account/register/    chrome   options=add_argument("--headless")
     Set Window Size    982    823
-    Input Text    id=id_user_name    12345asddff.asassedff334aaa1a
-    Input Text    id=id_email    12345a1aasdvffff.asdd12faa34sa3sd@eexample.com
+    Input Text    id=id_user_name    new_user_for_testing3
+    Input Text    id=id_email    new_user_for_testing3@gmail.com
     Input Text    id=id_password    asdf@1234
     Input Text    id=id_password2    asdf@1234
     Click Element    css=.btn-primary
@@ -29,7 +29,7 @@ Test Successful Registration
 Test Successful Login
     Open Browser    http://127.0.0.1:8000/account/login/    chrome  options=add_argument("--headless")
     Click Element    css=.account-form
-    Input Text    id=login-username    12345a1aasdvffff.asdd12faa34sa3sd@eexample.com
+    Input Text    id=login-username    new_user_for_testing3@gmail.com
     Input Text    id=login-pwd    asdf@1234
     Click Element    css=.login
     Click Element    css=.btn-primary
@@ -38,22 +38,21 @@ Test Successful Login
     Close Browser
 
 Test View Profile
-    Login   12345a1aasdvffff.asdd12faa34sa3sd@eexample.com     asdf@1234
+    Login   new_user_for_testing3@gmail.com     asdf@1234
     Click Element    css=.btn:nth-child(4)
     Title Should Be    My Profile
     Page Should Contain Element    css=.btn:nth-child(4)
     Close Browser
 
 Test Successful Land On Add Blog Post
-    Login    12345a1aasdvffff.asdd12faa34sa3sd@eexample.com    asdf@1234
+    Login    new_user_for_testing3@gmail.com    asdf@1234
     Set Window Size    982    823
     Click Element    xpath=//*[@id="add-post"]
     Title Should Be    Add New Post
     Close Browser
 
 Test Successful Add Blog Post
-    Login    12345a1aasdvffff.asdd12faa34sa3sd@eexample.com    asdf@1234
-#    Click Element    xpath=//*[@id="add-post"]
+    Login    new_user_for_testing3@gmail.com    asdf@1234
     Click Element    id=add-post
     Input Text    xpath=//*[@id="title"]    Some title
     Input Text    xpath=/html/body/div/div/div/form/div[2]/textarea   Some body
@@ -62,7 +61,7 @@ Test Successful Add Blog Post
     Close Browser
 
 Test Successful Add Comment
-    Login    12345a1aasdvffff.asdd12faa34sa3sd@eexample.com    asdf@1234
+    Login    new_user_for_testing3@gmail.com    asdf@1234
     Set Window Size    982    823
     Click Element    link=Some title
     Title Should Be    Post Detail Page
@@ -74,7 +73,7 @@ Test Successful Add Comment
 
 
 Test Edit Profile
-    Login    12345a1aasdvffff.asdd12faa34sa3sd@eexample.com    asdf@1234
+    Login    new_user_for_testing3@gmail.com    asdf@1234
     Set Window Size    982    823
     Click Element    css=.bi-person
     Click Element    css=.col-12
