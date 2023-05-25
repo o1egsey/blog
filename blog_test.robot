@@ -15,6 +15,7 @@ Login
 *** Test Cases ***
 Test Successful Registration
     Open Browser    http://127.0.0.1:8000/account/register/    chrome   options=add_argument("--headless")
+    Set Window Size    982    823
      ${title}    Get Title
     Log To Console    Page title: ${title}
 #    Click Element    id=id_user_name
