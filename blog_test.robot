@@ -7,7 +7,6 @@ Login
     [Arguments]    ${username}    ${password}
     Open Browser    http://127.0.0.1:8000/account/login/    chrome  options=add_argument("--headless")
     Set Window Size    982    823
-    Click Element    css=.account-form
     Input Text    id=login-username    ${username}
     Input Text    id=login-pwd    ${password}
     Click Element    css=.login

@@ -40,5 +40,5 @@ jobs:
 
       - name: Run Robot Tests
         run: |
-          python manage.py runserver &
+#          python manage.py runserver &
           robot blog_test.robot
