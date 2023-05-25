@@ -2,28 +2,26 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
-from django.test import LiveServerTestCase
 
 
-class TestDefaultSuite(LiveServerTestCase):
+class TestDefaultSuite():
     def setup_method(self, method):
-        self.vars = {}
         options = Options()
-        options.headless = True
-        self.driver = webdriver.Chrome(options=options)
+        # options.headless = True
+        self.driver = webdriver.Chrome(chrome_options=options)
 
     def teardown_method(self, method):
         self.driver.quit()
 
     @pytest.fixture
     def auth_user(self):
-        # self.driver.get("http://127.0.0.1:8000/account/login/")
-        self.driver.get(('%s%s' % (self.live_server_url, "/account/login/")))
+        self.driver.get("http://127.0.0.1:8000/account/login/")
         self.driver.set_window_size(982, 823)
         self.driver.find_element(By.CSS_SELECTOR, ".account-form").click()
         self.driver.find_element(By.ID, "login-username").send_keys(
-            "aasdf.asdd1faa3sa3sd@example.com"
+            "aasdvff.asdd1faa3sa3sd@example.com"
         )
         self.driver.find_element(By.ID, "login-pwd").send_keys("asdf@1234")
         self.driver.find_element(By.CSS_SELECTOR, ".login").click()
@@ -32,14 +30,14 @@ class TestDefaultSuite(LiveServerTestCase):
         yield self.driver
 
     def test_successfulRegistration(self):
-        # self.driver.get("http://127.0.0.1:8000/account/register/")
-        self.driver.get(('%s%s' % (self.live_server_url, "/account/register/")))
+        self.driver.get("http://127.0.0.1:8000/account/register/")
+
         self.driver.set_window_size(982, 823)
         self.driver.find_element(By.ID, "id_user_name").click()
-        self.driver.find_element(By.ID, "id_user_name").send_keys("asddf.asassdf33aaa")
+        self.driver.find_element(By.ID, "id_user_name").send_keys("asddf.asassdf33aaaa")
         self.driver.find_element(By.ID, "id_email").click()
         self.driver.find_element(By.ID, "id_email").send_keys(
-            "aasdf.asdd1faa3sa3sd@example.com"
+            "aasdvff.asdd1faa3sa3sd@example.com"
         )
         self.driver.find_element(By.ID, "id_password").click()
         self.driver.find_element(By.ID, "id_password").send_keys("asdf@1234")
@@ -56,12 +54,11 @@ class TestDefaultSuite(LiveServerTestCase):
         assert len(elements) > 0
 
     def test_successfulLogin(self):
-        # self.driver.get("http://127.0.0.1:8000/account/login/")
-        self.driver.get(('%s%s' % (self.live_server_url, "/account/login/")))
+        self.driver.get("http://127.0.0.1:8000/account/login/")
         self.driver.set_window_size(982, 823)
         self.driver.find_element(By.CSS_SELECTOR, ".account-form").click()
         self.driver.find_element(By.ID, "login-username").send_keys(
-            "aasdf.asdd1faa3sa3sd@example.com"
+            "aasdvff.asdd1faa3sa3sd@example.com"
         )
         self.driver.find_element(By.ID, "login-pwd").send_keys("asdf@1234")
         self.driver.find_element(By.CSS_SELECTOR, ".login").click()
@@ -71,15 +68,15 @@ class TestDefaultSuite(LiveServerTestCase):
         elements = self.driver.find_elements(By.CSS_SELECTOR, ".btn:nth-child(4)")
         assert len(elements) > 0
 
-    # def test_viewProfile(self, auth_user):
-    #     self.driver.get("http://127.0.0.1:8000/")
-    #     self.driver.set_window_size(982, 823)
-    #     self.driver.find_element(By.CSS_SELECTOR, ".bi-person").click()
-    #     assert self.driver.title == "My Profile"
-    #     # self.driver.find_element(By.CSS_SELECTOR, ".login").click()
-    #     elements = self.driver.find_elements(By.CSS_SELECTOR, ".btn:nth-child(4)")
-    #     assert len(elements) > 0
-    #
+    def test_viewProfile(self, auth_user):
+        self.driver.get("http://127.0.0.1:8000/")
+        self.driver.set_window_size(982, 823)
+        self.driver.find_element(By.CSS_SELECTOR, ".bi-person").click()
+        assert self.driver.title == "My Profile"
+        # self.driver.find_element(By.CSS_SELECTOR, ".login").click()
+        elements = self.driver.find_elements(By.CSS_SELECTOR, ".btn:nth-child(4)")
+        assert len(elements) > 0
+
     # def test_successfulLandOnAddBlogPost(self, auth_user):
     #     self.driver.get("http://127.0.0.1:8000/")
     #     self.driver.set_window_size(982, 823)
