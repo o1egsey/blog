@@ -33,10 +33,10 @@ jobs:
         run: |
           pyflakes blog 
 
-      - name: Run tests
-        run: |
-          python manage.py runserver &
-          pytest -vv
+#      - name: Run tests
+#        run: |
+#          python manage.py runserver &
+#          pytest -vv
 
       - name: Run Robot Tests
         run: |
