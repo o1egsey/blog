@@ -37,3 +37,8 @@ jobs:
         run: |
           python manage.py runserver &
           pytest -vv
+
+      - name: Run Robot Tests
+        run: |
+          python manage.py runserver &
+          robot .\auto_tests\robot_framework\blog_test.robot
