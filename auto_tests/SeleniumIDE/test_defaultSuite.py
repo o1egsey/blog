@@ -88,9 +88,9 @@ class TestDefaultSuite():
         self.driver.set_window_size(982, 823)
         self.driver.find_element(By.ID, "add-post").click()
         self.driver.find_element(By.ID, "title").click()
-        self.driver.find_element(By.ID, "title").send_keys("Some neq title")
+        self.driver.find_element(By.ID, "title").send_keys("Some neqr title")
         self.driver.find_element(By.NAME, "content").click()
-        self.driver.find_element(By.NAME, "content").send_keys("Some neq body")
+        self.driver.find_element(By.NAME, "content").send_keys("Some neqr body")
         self.driver.find_element(By.ID, "add-post").click()
         assert (
             self.driver.find_element(By.CSS_SELECTOR, ".message").text
@@ -100,7 +100,7 @@ class TestDefaultSuite():
     def test_successfulAddComment(self, auth_user):
         self.driver.get("http://127.0.0.1:8000/")
         self.driver.set_window_size(982, 823)
-        self.driver.find_element(By.LINK_TEXT, "Some title").click()
+        self.driver.find_element(By.LINK_TEXT, "Some neqr title").click()
         assert self.driver.title == "Post Detail Page"
         self.driver.find_element(By.ID, "id_content").click()
         self.driver.find_element(By.ID, "id_content").send_keys("asdf")
