@@ -25,13 +25,13 @@ jobs:
           python manage.py makemigrations
           python manage.py migrate
 
-#      - name: Run PyCodeStyle
-#        run: |
-#          pycodestyle blog
-#
-#      - name: Run PyFlakes
-#        run: |
-#          pyflakes blog
+      - name: Run PyCodeStyle
+        run: |
+          pycodestyle blog
+
+      - name: Run PyFlakes
+        run: |
+          pyflakes blog
 
       - name: Run tests
         run: |
@@ -39,6 +39,4 @@ jobs:
           pytest -vv
 
       - name: Run Robot Tests
-        run: |
-#          python manage.py runserver &
-          robot blog_test.robot
+        run: robot blog_test.robot
