@@ -48,6 +48,7 @@ Test View Profile
     Set Window Size    982    823
     Click Element    css=.btn:nth-child(3)
     Title Should Be    My Profile
+    Capture Page Screenshot
     Page Should Contain Element    css=.btn:nth-child(4)
     Close Browser
 
