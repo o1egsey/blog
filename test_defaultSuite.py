@@ -34,10 +34,10 @@ class TestDefaultSuite():
 
         self.driver.set_window_size(982, 823)
         self.driver.find_element(By.ID, "id_user_name").click()
-        self.driver.find_element(By.ID, "id_user_name").send_keys("asddf.asassdf33aaaa")
+        self.driver.find_element(By.ID, "id_user_name").send_keys("asddf.asassdf334aaaa")
         self.driver.find_element(By.ID, "id_email").click()
         self.driver.find_element(By.ID, "id_email").send_keys(
-            "aasdvff.asdd1faa3sa3sd@example.com"
+            "aasdvff.asdd1faa34sa3sd@example.com"
         )
         self.driver.find_element(By.ID, "id_password").click()
         self.driver.find_element(By.ID, "id_password").send_keys("asdf@1234")
