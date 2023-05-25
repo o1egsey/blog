@@ -21,7 +21,7 @@ class TestDefaultSuite():
         self.driver.set_window_size(982, 823)
         self.driver.find_element(By.CSS_SELECTOR, ".account-form").click()
         self.driver.find_element(By.ID, "login-username").send_keys(
-            "aasdvff.asdd1faa3sa3sd@example.com"
+            "aasdvff.asdd12faa34sa3sd@example.com"
         )
         self.driver.find_element(By.ID, "login-pwd").send_keys("asdf@1234")
         self.driver.find_element(By.CSS_SELECTOR, ".login").click()
@@ -37,7 +37,7 @@ class TestDefaultSuite():
         self.driver.find_element(By.ID, "id_user_name").send_keys("asddf.asassdf334aaaa")
         self.driver.find_element(By.ID, "id_email").click()
         self.driver.find_element(By.ID, "id_email").send_keys(
-            "aasdvff.asdd1faa34sa3sd@example.com"
+            "aasdvff.asdd12faa34sa3sd@example.com"
         )
         self.driver.find_element(By.ID, "id_password").click()
         self.driver.find_element(By.ID, "id_password").send_keys("asdf@1234")
@@ -58,7 +58,7 @@ class TestDefaultSuite():
         self.driver.set_window_size(982, 823)
         self.driver.find_element(By.CSS_SELECTOR, ".account-form").click()
         self.driver.find_element(By.ID, "login-username").send_keys(
-            "aasdvff.asdd1faa3sa3sd@example.com"
+            "aasdvff.asdd12faa34sa3sd@example.com"
         )
         self.driver.find_element(By.ID, "login-pwd").send_keys("asdf@1234")
         self.driver.find_element(By.CSS_SELECTOR, ".login").click()
