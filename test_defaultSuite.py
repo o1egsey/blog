@@ -21,7 +21,7 @@ class TestDefaultSuite():
         self.driver.set_window_size(982, 823)
         self.driver.find_element(By.CSS_SELECTOR, ".account-form").click()
         self.driver.find_element(By.ID, "login-username").send_keys(
-            "aasdvfff.asdd12faa34sa3sd@example.com"
+            "aaasdvfff.asdd12faa34sa3sd@example.com"
         )
         self.driver.find_element(By.ID, "login-pwd").send_keys("asdf@1234")
         self.driver.find_element(By.CSS_SELECTOR, ".login").click()
@@ -37,7 +37,7 @@ class TestDefaultSuite():
         self.driver.find_element(By.ID, "id_user_name").send_keys("asddf.asassdff334aaaa")
         self.driver.find_element(By.ID, "id_email").click()
         self.driver.find_element(By.ID, "id_email").send_keys(
-            "aasdvfff.asdd12faa34sa3sd@example.com"
+            "aaasdvfff.asdd12faa34sa3sd@example.com"
         )
         self.driver.find_element(By.ID, "id_password").click()
         self.driver.find_element(By.ID, "id_password").send_keys("asdf@1234")
@@ -58,7 +58,7 @@ class TestDefaultSuite():
         self.driver.set_window_size(982, 823)
         self.driver.find_element(By.CSS_SELECTOR, ".account-form").click()
         self.driver.find_element(By.ID, "login-username").send_keys(
-            "aasdvfff.asdd12faa34sa3sd@example.com"
+            "aaasdvfff.asdd12faa34sa3sd@example.com"
         )
         self.driver.find_element(By.ID, "login-pwd").send_keys("asdf@1234")
         self.driver.find_element(By.CSS_SELECTOR, ".login").click()
@@ -83,20 +83,6 @@ class TestDefaultSuite():
         self.driver.find_element(By.ID, "add-post").click()
         assert self.driver.title == "Add New Post"
 
-    def test_successfulAddComment(self, auth_user):
-        self.driver.get("http://127.0.0.1:8000/")
-        self.driver.set_window_size(982, 823)
-        self.driver.find_element(By.LINK_TEXT, "Some title").click()
-        assert self.driver.title == "Post Detail Page"
-        self.driver.find_element(By.ID, "id_content").click()
-        self.driver.find_element(By.ID, "id_content").send_keys("asdf")
-        self.driver.find_element(By.CSS_SELECTOR, ".btn-primary:nth-child(3)").click()
-        assert (
-            self.driver.find_element(By.CSS_SELECTOR, ".message").text
-            == "Коментар додано успішно!"
-        )
-        assert self.driver.find_element(By.CSS_SELECTOR, ".col-md-9").text == "asdf"
-
     def test_successfulAddBlogPost(self, auth_user):
         self.driver.get("http://127.0.0.1:8000/")
         self.driver.set_window_size(982, 823)
@@ -110,6 +96,20 @@ class TestDefaultSuite():
             self.driver.find_element(By.CSS_SELECTOR, ".message").text
             == "Blog Post posted successfully!"
         )
+
+    def test_successfulAddComment(self, auth_user):
+        self.driver.get("http://127.0.0.1:8000/")
+        self.driver.set_window_size(982, 823)
+        self.driver.find_element(By.LINK_TEXT, "Some title").click()
+        assert self.driver.title == "Post Detail Page"
+        self.driver.find_element(By.ID, "id_content").click()
+        self.driver.find_element(By.ID, "id_content").send_keys("asdf")
+        self.driver.find_element(By.CSS_SELECTOR, ".btn-primary:nth-child(3)").click()
+        assert (
+            self.driver.find_element(By.CSS_SELECTOR, ".message").text
+            == "Коментар додано успішно!"
+        )
+        assert self.driver.find_element(By.CSS_SELECTOR, ".col-md-9").text == "asdf"
 
     def test_ediProfile(self, auth_user):
         self.driver.get("http://127.0.0.1:8000/")
