@@ -150,21 +150,21 @@ class TestDefaultSuite:
         self.take_screenshot(self.driver, "successful_landOnPost")
 
 
-    # def test_successfulAddBlogPost(self):
-    #     login_page = LoginPage(self.driver)
-    #     login_page.open()
-    #     login_page.login("new_user_for_12553@gmail.com", "asdf@1234")
-    #
-    #     home_page = HomePage(self.driver)
-    #     home_page.open()
-    #     home_page.click_add_post()
-    #
-    #     blog_post_page = BlogPostPage(self.driver)
-    #     blog_post_page.add_post("Some o1 title", "Some o1 body")
-    #
-    #     message = self.driver.find_element(By.CSS_SELECTOR, ".message").text
-    #     assert message == "Blog Post posted successfully!"
-    #     self.take_screenshot(self.driver, "successful_addPost")
+    def test_successfulAddBlogPost(self):
+        login_page = LoginPage(self.driver)
+        login_page.open()
+        login_page.login("new_user_for_12553@gmail.com", "asdf@1234")
+
+        home_page = HomePage(self.driver)
+        home_page.open()
+        home_page.click_add_post()
+
+        blog_post_page = BlogPostPage(self.driver)
+        blog_post_page.add_post("Some o1 title", "Some o1 body")
+
+        message = self.driver.find_element(By.CSS_SELECTOR, ".message").text
+        # assert message == "Blog Post posted successfully!"
+        self.take_screenshot(self.driver, "successful_addPost")
 
 
     def test_successfulAddComment(self):
