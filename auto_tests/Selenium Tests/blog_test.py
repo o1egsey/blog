@@ -102,7 +102,7 @@ class TestDefaultSuite:
         registration_page = RegistrationPage(self.driver)
         registration_page.open()
         registration_page.register(
-            "new_user_for_testing125536", "new_user_for_testing125536@gmail.com", "asdf@1234"
+            "new_user_for_125536", "new_user_for_125536@gmail.com", "asdf@1234"
         )
         message = self.driver.find_element(By.CSS_SELECTOR, ".message").text
         assert message == "Реєстрація успішна!"
@@ -116,7 +116,7 @@ class TestDefaultSuite:
     def test_successfulLogin(self):
         login_page = LoginPage(self.driver)
         login_page.open()
-        login_page.login("new_user_for_testing12553@gmail.com", "asdf@1234")
+        login_page.login("new_user_for_12553@gmail.com", "asdf@1234")
         elements = self.driver.find_elements(By.LINK_TEXT, "Вийти")
         assert len(elements) > 0
         elements = self.driver.find_elements(By.CSS_SELECTOR, ".btn:nth-child(4)")
@@ -127,7 +127,7 @@ class TestDefaultSuite:
     def test_viewProfile(self):
         login_page = LoginPage(self.driver)
         login_page.open()
-        login_page.login("new_user_for_testing12553@gmail.com", "asdf@1234")
+        login_page.login("new_user_for_12553@gmail.com", "asdf@1234")
 
         home_page = HomePage(self.driver)
         home_page.open()
@@ -141,7 +141,7 @@ class TestDefaultSuite:
     def test_successfulLandOnAddBlogPost(self):
         login_page = LoginPage(self.driver)
         login_page.open()
-        login_page.login("new_user_for_testing12553@gmail.com", "asdf@1234")
+        login_page.login("new_user_for_12553@gmail.com", "asdf@1234")
 
         home_page = HomePage(self.driver)
         home_page.open()
@@ -153,14 +153,14 @@ class TestDefaultSuite:
     def test_successfulAddBlogPost(self):
         login_page = LoginPage(self.driver)
         login_page.open()
-        login_page.login("new_user_for_testing12553@gmail.com", "asdf@1234")
+        login_page.login("new_user_for_12553@gmail.com", "asdf@1234")
 
         home_page = HomePage(self.driver)
         home_page.open()
         home_page.click_add_post()
 
         blog_post_page = BlogPostPage(self.driver)
-        blog_post_page.add_post("Some o title", "Some o body")
+        blog_post_page.add_post("Some o1 title", "Some o1 body")
 
         message = self.driver.find_element(By.CSS_SELECTOR, ".message").text
         assert message == "Blog Post posted successfully!"
@@ -170,11 +170,11 @@ class TestDefaultSuite:
     def test_successfulAddComment(self):
         login_page = LoginPage(self.driver)
         login_page.open()
-        login_page.login("new_user_for_testing12553@gmail.com", "asdf@1234")
+        login_page.login("new_user_for_12553@gmail.com", "asdf@1234")
 
         home_page = HomePage(self.driver)
         home_page.open()
-        self.driver.find_element(By.LINK_TEXT, "Some o title").click()
+        self.driver.find_element(By.LINK_TEXT, "Some o1 title").click()
 
         comment_page = CommentPage(self.driver)
         comment_page.add_comment("asdf")
@@ -187,14 +187,14 @@ class TestDefaultSuite:
     def test_editProfile(self):
         login_page = LoginPage(self.driver)
         login_page.open()
-        login_page.login("new_user_for_testing12553@gmail.com", "asdf@1234")
+        login_page.login("new_user_for_12553@gmail.com", "asdf@1234")
 
         home_page = HomePage(self.driver)
         home_page.open()
         home_page.click_profile()
 
         profile_page = ProfilePage(self.driver)
-        profile_page.edit_profile("ashis", "raj", "25", "https://example.com", "Чоловік")
+        profile_page.edit_profile("ashis", "raja", "26", "https://example1.com", "Чоловік")
 
         message = self.driver.find_element(By.CSS_SELECTOR, ".message").text
         assert message == "Profile updated successfully!"
@@ -203,7 +203,7 @@ class TestDefaultSuite:
     def test_successfulLogout(self):
         login_page = LoginPage(self.driver)
         login_page.open()
-        login_page.login("new_user_for_testing12553@gmail.com", "asdf@1234")
+        login_page.login("new_user_for_12553@gmail.com", "asdf@1234")
 
         home_page = HomePage(self.driver)
         home_page.open()
