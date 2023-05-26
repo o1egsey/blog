@@ -102,7 +102,7 @@ class TestDefaultSuite:
         registration_page = RegistrationPage(self.driver)
         registration_page.open()
         registration_page.register(
-            "new_user_for_testing12553", "new_user_for_testing12553@gmail.com", "asdf@1234"
+            "new_user_for_testing125536", "new_user_for_testing125536@gmail.com", "asdf@1234"
         )
         message = self.driver.find_element(By.CSS_SELECTOR, ".message").text
         assert message == "Реєстрація успішна!"
@@ -160,7 +160,7 @@ class TestDefaultSuite:
         home_page.click_add_post()
 
         blog_post_page = BlogPostPage(self.driver)
-        blog_post_page.add_post("Some neqr title", "Some neqr body")
+        blog_post_page.add_post("Some o title", "Some o body")
 
         message = self.driver.find_element(By.CSS_SELECTOR, ".message").text
         assert message == "Blog Post posted successfully!"
@@ -174,7 +174,7 @@ class TestDefaultSuite:
 
         home_page = HomePage(self.driver)
         home_page.open()
-        self.driver.find_element(By.LINK_TEXT, "Some neqr title").click()
+        self.driver.find_element(By.LINK_TEXT, "Some o title").click()
 
         comment_page = CommentPage(self.driver)
         comment_page.add_comment("asdf")
