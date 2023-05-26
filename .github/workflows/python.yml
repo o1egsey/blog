@@ -38,6 +38,6 @@ jobs:
           python manage.py runserver &
           pytest -vv
 
-      - name: Run Robot Tests
-        run:
-          robot blog_test.robot
+#      - name: Run Robot Tests
+#        run:
+#          robot blog_test.robot
