@@ -103,7 +103,7 @@ class TestDefaultSuite:
         registration_page = RegistrationPage(self.driver)
         registration_page.open()
         registration_page.register(
-            "new5_user_for_125538", "new5_user_for_125538@gmail.com", "asdf@1234"
+            "new5_user_for_1255389", "new5_user_for_1255389@gmail.com", "asdf@1234"
         )
         message = self.driver.find_element(By.CSS_SELECTOR, ".message").text
         assert message == "Реєстрація успішна!"
