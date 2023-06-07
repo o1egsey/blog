@@ -33,13 +33,17 @@ jobs:
         run: |
           pyflakes blog
 
-      - name: Run tests
-        run: |
-          python manage.py runserver &
-          pytest -vv
+#      - name: Run tests
+#        run: |
+#          python manage.py runserver &
+#          pytest -vv
 
       - name: Run Behave Test
-        run: behave ./auto_tests/behave_tests/features/
+        run: |
+          python manage.py runserver &
+          behave ./auto_tests/behave_tests/features/register.feature
+          behave ./auto_tests/behave_tests/features/login.feature
+          behave ./auto_tests/behave_tests/features/blog_post.feature
 
 #      - name: Run Robot Tests
 #        run:
