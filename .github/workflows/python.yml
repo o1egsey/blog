@@ -40,7 +40,7 @@ jobs:
 
       - name: Run Behave Test
         run: |
-          python manage.py runserver &
+#          python manage.py runserver &
           behave ./auto_tests/behave_tests/features/
 
 #      - name: Run Robot Tests
