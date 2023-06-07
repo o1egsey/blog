@@ -103,7 +103,7 @@ class TestDefaultSuite:
         registration_page = RegistrationPage(self.driver)
         registration_page.open()
         registration_page.register(
-            "new5_user_for_125536", "new5_user_for_125536@gmail.com", "asdf@1234"
+            "new5_user_for_125537", "new5_user_for_125537@gmail.com", "asdf@1234"
         )
         message = self.driver.find_element(By.CSS_SELECTOR, ".message").text
         assert message == "Реєстрація успішна!"
@@ -117,7 +117,7 @@ class TestDefaultSuite:
     def test_successfulLogin(self):
         login_page = LoginPage(self.driver)
         login_page.open()
-        login_page.login("new5_user_for_12553@gmail.com", "asdf@1234")
+        login_page.login("new5_user_for_125537@gmail.com", "asdf@1234")
         elements = self.driver.find_elements(By.LINK_TEXT, "Вийти")
         assert len(elements) > 0
         elements = self.driver.find_elements(By.CSS_SELECTOR, ".btn:nth-child(4)")
@@ -128,7 +128,7 @@ class TestDefaultSuite:
     def test_viewProfile(self):
         login_page = LoginPage(self.driver)
         login_page.open()
-        login_page.login("new5_user_for_12553@gmail.com", "asdf@1234")
+        login_page.login("new5_user_for_125537@gmail.com", "asdf@1234")
 
         home_page = HomePage(self.driver)
         home_page.open()
@@ -142,7 +142,7 @@ class TestDefaultSuite:
     def test_successfulLandOnAddBlogPost(self):
         login_page = LoginPage(self.driver)
         login_page.open()
-        login_page.login("new5_user_for_12553@gmail.com", "asdf@1234")
+        login_page.login("new5_user_for_125537@gmail.com", "asdf@1234")
 
         home_page = HomePage(self.driver)
         home_page.open()
@@ -154,7 +154,7 @@ class TestDefaultSuite:
     def test_successfulAddBlogPost(self):
         login_page = LoginPage(self.driver)
         login_page.open()
-        login_page.login("new_user_for_12553@gmail.com", "asdf@1234")
+        login_page.login("new_user_for_125537@gmail.com", "asdf@1234")
 
         home_page = HomePage(self.driver)
         home_page.open()
@@ -171,7 +171,7 @@ class TestDefaultSuite:
     def test_successfulAddComment(self):
         login_page = LoginPage(self.driver)
         login_page.open()
-        login_page.login("new5_user_for_12553@gmail.com", "asdf@1234")
+        login_page.login("new5_user_for_125537@gmail.com", "asdf@1234")
 
         home_page = HomePage(self.driver)
         home_page.open()
@@ -188,7 +188,7 @@ class TestDefaultSuite:
     def test_editProfile(self):
         login_page = LoginPage(self.driver)
         login_page.open()
-        login_page.login("new5_user_for_12553@gmail.com", "asdf@1234")
+        login_page.login("new5_user_for_125537@gmail.com", "asdf@1234")
 
         home_page = HomePage(self.driver)
         home_page.open()
@@ -204,7 +204,7 @@ class TestDefaultSuite:
     def test_successfulLogout(self):
         login_page = LoginPage(self.driver)
         login_page.open()
-        login_page.login("new5_user_for_12553@gmail.com", "asdf@1234")
+        login_page.login("new5_user_for_125537@gmail.com", "asdf@1234")
 
         home_page = HomePage(self.driver)
         home_page.open()
