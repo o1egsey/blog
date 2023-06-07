@@ -44,6 +44,7 @@ class HomePage(BasePage):
 
     def click_add_post(self):
         self.driver.find_element(By.ID, "add-post").click()
+        # self.driver.find_element(By.XPATH, "/html/body/div/div/div/div[1]/div/div/button").click()
 
     def click_logout(self):
         self.driver.find_element(By.CSS_SELECTOR, ".bi-door-closed").click()
