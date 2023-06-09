@@ -119,10 +119,15 @@ def profile_edit(request, id):
 
 
 def create_test_data(request):
-    user = UserBase.objects.create_user(user_name='te1est1__userr1', password='test1password', email='test11r@user.com')
+    user = UserBase.objects.create_user(user_name='te1est1__userr1',
+                                        password='test1password',
+                                        email='test11r@user.com')
 
     for i in range(1000):
-        post = PostModel(title=f'Test Post {i}', content='Test Content', author=user, is_test_data=True)
+        post = PostModel(title=f'Test Post {i}',
+                         content='Test Content',
+                         author=user,
+                         is_test_data=True)
         post.save()
 
     return HttpResponse('Test data created successfully')
