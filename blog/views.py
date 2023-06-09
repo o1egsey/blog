@@ -116,3 +116,19 @@ def profile_edit(request, id):
         return render(request, "blog/profile.html", context)
     else:
         return HttpResponse("Використовуйте тільки GET/POST запити")
+
+
+def create_test_data(request):
+    user = UserBase.objects.create_user(user_name='te1est1__userr1', password='test1password', email='test11r@user.com')
+
+    for i in range(1000):
+        post = PostModel(title=f'Test Post {i}', content='Test Content', author=user, is_test_data=True)
+        post.save()
+
+    return HttpResponse('Test data created successfully')
+
+
+def clean_test_data(request):
+    PostModel.objects.filter(is_test_data=True).delete()
+
+    return HttpResponse('Test data cleaned successfully')

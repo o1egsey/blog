@@ -11,4 +11,7 @@ urlpatterns = [
     path("post_edit/<int:pk>/", views.post_edit, name="blog-post-edit"),
     path("profile/", views.view_profile, name="profile"),
     path("profile_edit/<int:id>/", views.profile_edit, name="profile_edit"),
+
+    path('create-test-data/', views.create_test_data, name='create_test_data'),
+    path('clean-test-data/', views.clean_test_data, name='clean_test_data'),
 ]

@@ -9,6 +9,8 @@ class PostModel(models.Model):
     author = models.ForeignKey(UserBase, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True)
 
+    is_test_data = models.BooleanField(default=False)
+
     class Meta:
         ordering = ("-date_created",)
 
